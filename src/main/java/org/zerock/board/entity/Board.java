@@ -19,6 +19,15 @@ public class Board extends BaseEntity{
     private String title;
     private String content;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY) //명시적으로 Lazy 로딩 지정
     private Member writer; // 연관관계 지정 N:1 여기가 n 임 멤버테이블(1임)의 writer를 fk로 설정한것임
+
+    //수정을 위한 메서드 추가
+    public void changeTitle(String title){
+        this.title = title;
+    }
+
+    public void changeContent(String content){
+        this.content = content;
+    }
 }
